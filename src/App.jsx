@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import ListMovies from './components/ListMovies';
 import { useMovies } from './hooks/useMovies';
-
-const API_KEY = 'afd76987';
-
+import { fetchMovies } from './services/movies'
 
 function App() {
   const [movieSearch, setMovieSearch] = useState('');
@@ -15,21 +13,16 @@ function App() {
   const { movies } = useMovies();
 
   useEffect(() => {
-    async function fetchMovies() {
-      try {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movieSearch}&page=1`);
-        const data = await response.json();
-        setMoviesList(data.Search || movies);
-      } catch (error) {
-        console.log(error);
-      }
+    const fetchData = async () => {
+      const data = await fetchMovies(movieSearch)
+      setMoviesList(data);
     }
-    fetchMovies()
+    fetchData()
+
   }, [movieSearch])
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(movieSearch, 'Esto guarde');
   };
 
   const handleChange = (event) => {
@@ -73,7 +66,7 @@ function App() {
       </header>
       <main>
         {movieSearch ?
-          <ListMovies movies={moviesList} />
+          <ListMovies movies={moviesList || movies} />
           : null}
       </main>
     </div>
