@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom"
 
 
 const ListMovies = ({ movies }) => {
+    const navigation = useNavigate()
 
+    const sendId = (id) => {
+        navigation('/moviepage/' + id)
+    }
 
-   
-    const hasMovies = movies.length > 0
+    const hasMovies = movies
 
     return (
         hasMovies ?
@@ -13,8 +17,8 @@ const ListMovies = ({ movies }) => {
                     {
                         movies.map((movie) => (
                             <li key={movie.imdbID}
-                                onClick={() => { handleClick(movie) }}>
-                                    
+                                onClick={() => { sendId(movie.imdbID) }}>
+
                                 <div className="text-card">
                                     <h4>{movie.Title}</h4>
                                     <p>{movie.Year}</p>
