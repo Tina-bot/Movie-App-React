@@ -1,0 +1,61 @@
+.movie-info {
+    display: flex;
+}
+
+.movie-info-right {
+    width: 50%;
+}
+
+.movie-info-left {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-movie-page {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    margin: 20px;
+}
+
+.title-movie-page {
+    text-transform: capitalize;
+}
+
+.title-movie-page:before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 10%;
+    height: 2px;
+    content: "";
+    background-color: #c50000;
+}
+
+.title-movie-page span {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 3em;
+    padding-left: 0.25em;
+    color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 10px;
+}
+
+.alt-title-movie-page {
+    text-align: center;
+}
+
+.alt-title-movie-page:before {
+    left: 50%;
+    margin-left: -30px;
+}
