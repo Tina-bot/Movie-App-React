@@ -17,7 +17,7 @@ const NavBar = () => {
     return (
         <nav className="navbar">
             <NavLink className="nav-item" to="mainpage" > MainPage </NavLink>
-            <NavLink className="nav-item" to="mainpage" > List Movies </NavLink>
+            <NavLink className="nav-item" to="listmovie" > List Movies </NavLink>
             <NavLink className="nav-item" to={`moviepage/${randomMovie}`}
                 onClick={() => getMovieRandom} > Movie Random    </NavLink>
         </nav>
