@@ -13,11 +13,23 @@ export async function fetchMovies(movieSearch) {
 
 export async function fetchMoviesByID(movieID) {
     try {
-        const response = await fetch(`http://www.omdbapi.com/?i=${movieID}&apikey=${API_KEY}`);
+        const response = await fetch(`https://www.omdbapi.com/?i=${movieID}&apikey=${API_KEY}`);
         const data = await response.json();
         console.log(JSON.stringify(data));
         return data
     } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function fetchMoviesList(page,year) {
+    try {
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=movie&y=${year}&page=${page}&type=movie`);
+        const data = await response.json();
+        console.log(JSON.stringify(data));
+        return data.Search
+    }
+    catch (error) {
         console.log(error);
     }
 }
