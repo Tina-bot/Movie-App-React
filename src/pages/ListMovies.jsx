@@ -3,41 +3,37 @@ import { fetchMoviesList } from "../services/movies"
 import { Link } from "react-router-dom"
 import './ListMovies.css'
 
-/** TODO: Add filter and errors to input, add second filter (title, type or genre) **/
-
 const ListMoviesPage = () => {
     const [movies, setMovies] = useState([])
     const [year, setYear] = useState(2023)
 
-    useEffect(() => {
-        const makeList = async () => {
-            const data = await fetchMoviesList(1, year)
-            const data2 = await fetchMoviesList(2, year)
-            const data3 = await fetchMoviesList(3, year)
-            const data4 = await fetchMoviesList(4, year)
+    const makeList = async () => {
+        const data = await fetchMoviesList(1, year)
+        const data2 = await fetchMoviesList(2, year)
+        const data3 = await fetchMoviesList(3, year)
+        const data4 = await fetchMoviesList(4, year)
 
-            setMovies([...data, ...data2, ...data3, ...data4])
-            console.log(data)
-        }
+        setMovies([...data, ...data2, ...data3, ...data4])
+        console.log(data)
+    }
+    useEffect(() => {
         makeList()
     }, [year])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = await fetchMoviesList(1, year);
-        const data2 = await fetchMoviesList(2, year);
-        const data3 = await fetchMoviesList(3, year);
-        const data4 = await fetchMoviesList(4, year);
-        setMovies([...data, ...data2, ...data3, ...data4]);
+        makeList()
+
     };
+
     return (
         <div>
             <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="year">Year</label>
-                <input type="text"
+                <input type="number"
                     id="year"
                     value={year}
                     onChange={(e) => setYear(e.target.value)} />
-
             </form>
             <ul>
                 {
