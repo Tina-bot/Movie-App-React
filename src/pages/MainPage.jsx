@@ -58,14 +58,14 @@ const MainPage = () => {
               placeholder="The Lord of the Rings, Star Wars, Titanic..."
               ref={inputRef}
             />
-            <button type="submit">Search</button>
-          </form>
-
           {error ? (
             <small style={{ color: 'red' }}>
               {error}
             </small>
           ) : null}
+            <button type="submit">Search</button>
+          </form>
+
 
         </header>
         <main>
