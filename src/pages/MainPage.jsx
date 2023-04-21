@@ -3,6 +3,7 @@ import '../App.css'
 import ListMovies from '../components/ListMovies';
 import { useMovies } from '../hooks/useMovies';
 import { fetchMovies } from '../services/movies'
+import useDebounce from '../hooks/useDebounce';
 
 
 const MainPage = () => {
@@ -12,15 +13,16 @@ const MainPage = () => {
   const inputRef = useRef();
 
   const { movies } = useMovies();
+  const debouncedMovieSearch = useDebounce(movieSearch, 100)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchMovies(movieSearch)
+      const data = await fetchMovies(debouncedMovieSearch)
       setMoviesList(data);
     }
     fetchData()
 
-  }, [movieSearch])
+  }, [debouncedMovieSearch])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -51,7 +53,7 @@ const MainPage = () => {
             onSubmit={handleSubmit}>
             <input
               onChange={handleChange}
-              value={movieSearch} 
+              value={movieSearch}
               name="inputMovie"
               placeholder="The Lord of the Rings, Star Wars, Titanic..."
               ref={inputRef}
