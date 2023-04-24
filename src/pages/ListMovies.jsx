@@ -28,8 +28,8 @@ const ListMoviesPage = () => {
 
     return (
         <div>
+            <h1>Movies By Year</h1>
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="year">Year</label>
                 <input type="number"
                     id="year"
                     value={year}
@@ -44,6 +44,7 @@ const ListMoviesPage = () => {
                                 <Link to={`/moviepage/${movie.imdbID}`}>
                                     {movie.Title}
                                 </Link>
+                                <hr />
                             </li>
                         )
                         : <h1>Loading...</h1>
