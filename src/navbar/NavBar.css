@@ -1,11 +1,16 @@
 nav {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     background-color: rgba(0, 0, 0, 0.323);
     padding: 1rem;
     border: 1px solid transparent;
     border-radius: 10px;
+    }
+
+  nav .nav-group-items{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
   }
   
   .nav-item {
